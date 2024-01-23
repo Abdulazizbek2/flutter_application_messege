@@ -93,7 +93,7 @@ class _BottomSheetTextFieldComponentState
               8.horizontalSpace,
               Expanded(
                   child: SizedBox(
-                      height: 42.h,
+                      height: 50.h,
                       child: CustomTextField(
                         controller: _controller,
                         hintText: "Сообщение",
@@ -101,6 +101,7 @@ class _BottomSheetTextFieldComponentState
                           setState(() {});
                         },
                         focusNode: _node,
+                        maxLines: 1,
                       ))),
               8.horizontalSpace,
               SizedBox(
