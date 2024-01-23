@@ -1,139 +1,150 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_messege/src/infrastructure/models/chat_model.dart';
+import 'package:flutter_application_messege/src/infrastructure/models/color_enum.dart';
 import 'package:flutter_application_messege/src/presentation/util/styles/style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomProfileItem extends StatelessWidget {
   const CustomProfileItem(
-      {super.key, this.name, this.subTitle, this.date, required this.isMeSend});
+      {super.key, required this.chatModel, required this.onTap});
 
-  final String? name;
-  final String? subTitle;
-  final String? date;
-  final bool isMeSend;
+  final ChatModel? chatModel;
+
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    List<String> listName = name?.split(' ') ?? [];
+    List<String> listName = chatModel?.personName?.split(' ') ?? [];
     String avatarText = (listName.isNotEmpty && listName[0].isNotEmpty
             ? listName[0][0]
             : '') +
         (listName.length >= 2 && listName[1].isNotEmpty ? listName[1][0] : '');
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: 10.h, right: 12.w, bottom: 10.h),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              DecoratedBox(
-                decoration: ShapeDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment(0.00, -1.00),
-                    end: Alignment(0, 1),
-                    colors: [Color(0xFF1EDA5E), Color(0xFF31C764)],
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(34),
-                  ),
-                ),
-                child: SizedBox(
-                  width: 50.w,
-                  height: 50.w,
-                  child: Center(
-                    child: Text(
-                      avatarText, // 'ВВ',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontFamily: 'Gilroy',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
+    return GestureDetector(
+      onTap: onTap,
+      child: DecoratedBox(
+        decoration: const BoxDecoration(
+          color: Style.white,
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 10.h, right: 12.w, bottom: 10.h),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DecoratedBox(
+                    decoration: ShapeDecoration(
+                      gradient: LinearGradient(
+                        begin: const Alignment(0.00, -1.00),
+                        end: const Alignment(0, 1),
+                        colors: getcolor(chatModel?.color ?? ""),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(34),
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 50.w,
+                      height: 50.w,
+                      child: Center(
+                        child: Text(
+                          avatarText.toUpperCase(), // 'ВВ',
+                          textAlign: TextAlign.center,
+                          style: Style.bold20(
+                            color: Colors.white,
+                            size: 20.sp,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              12.horizontalSpace,
-              Expanded(
-                child: SizedBox(
-                  height: 50.w,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name ?? 'Виктор Власов',
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontFamily: 'Gilroy',
-                          fontWeight: FontWeight.w600,
-                          height: 0,
-                        ),
-                      ),
-                      Row(
+                  12.horizontalSpace,
+                  Expanded(
+                    child: SizedBox(
+                      height: 50.w,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (isMeSend)
-                            const Text(
-                              'Вы:',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF2B333E),
-                                fontSize: 12,
-                                fontFamily: 'Gilroy',
-                                fontWeight: FontWeight.w500,
-                                height: 0,
-                              ),
+                          Text(
+                            chatModel?.personName ?? '',
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            style: Style.medium14(
+                              size: 15.sp,
                             ),
-                          if (isMeSend) 4.horizontalSpace,
-                          const Expanded(
-                            child: Text(
-                              'Уже сделал?',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: Color(0xFF5D7A90),
-                                fontSize: 12,
-                                fontFamily: 'Gilroy',
-                                fontWeight: FontWeight.w500,
-                                height: 0,
+                          ),
+                          Row(
+                            children: [
+                              if (chatModel?.lastMessaage?.userId ==
+                                  chatModel?.firstId)
+                                Text(
+                                  'Вы:',
+                                  textAlign: TextAlign.center,
+                                  style: Style.medium14(
+                                      size: 12.sp, color: Style.textBlack33E),
+                                ),
+                              if (chatModel?.lastMessaage?.userId ==
+                                  chatModel?.firstId)
+                                4.horizontalSpace,
+                              Expanded(
+                                child: Text(
+                                  chatModel?.lastMessaage?.title ?? '',
+                                  maxLines: 1,
+                                  textAlign: TextAlign.left,
+                                  style: Style.medium14(
+                                      size: 12.sp, color: Style.greyTextA90),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              12.horizontalSpace,
-              const Align(
-                alignment: Alignment.bottomRight,
-                // height: double.infinity,
-                child: Text(
-                  'Вчера',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    color: Color(0xFF5D7A90),
-                    fontSize: 12,
-                    fontFamily: 'Gilroy',
-                    fontWeight: FontWeight.w500,
-                    height: 0,
+                  12.horizontalSpace,
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Text(
+                      dateTimeToString(chatModel?.lastMessaage?.dateTime),
+                      textAlign: TextAlign.right,
+                      style:
+                          Style.medium14(size: 12.sp, color: Style.greyTextA90),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Divider(
+              height: 1.sp,
+              color: Style.dividerColor,
+              thickness: 1.sp,
+            )
+          ],
         ),
-        Divider(
-          height: 1.sp,
-          color: Style.dividerColor,
-          thickness: 1.sp,
-        )
-      ],
+      ),
     );
+  }
+}
+
+String dateTimeToString(DateTime? dateTime) {
+  DateTime now = DateTime.now();
+  if (dateTime?.day == now.day &&
+      dateTime?.month == now.month &&
+      dateTime?.year == now.year) {
+    if (now.hour - (dateTime?.hour ?? 2) >= 0) {
+      int minutt = now.minute - (dateTime?.minute ?? 0);
+      if (minutt == 0) return 'Только что';
+      return '$minutt минуты назад';
+    }
+    return '${dateTime?.hour}:${dateTime?.minute}';
+  } else if (dateTime?.day == (DateTime.now().day - 1) &&
+      dateTime?.month == DateTime.now().month &&
+      dateTime?.year == DateTime.now().year) {
+    return 'Вчера';
+  } else {
+    return '${dateTime?.day}.${dateTime?.month}.${dateTime?.year.toString().substring(2)}';
   }
 }

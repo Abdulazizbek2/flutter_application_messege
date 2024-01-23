@@ -3,5 +3,6 @@ class AppIconsPath {
   static const String doubleCheck = 'assets/icons/svg/double_check.svg';
   static const String microphone = 'assets/icons/svg/microphone.svg';
   static const String attach = 'assets/icons/svg/attach.svg';
+  static const String sendMessage = 'assets/icons/svg/send_message.svg';
   static const String search = 'assets/icons/svg/search_ic.svg';
 }

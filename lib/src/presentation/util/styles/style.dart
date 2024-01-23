@@ -11,6 +11,7 @@ class Style {
   static const Color textFieldTextGrey = Color(0xFF9DB6CA);
   static const Color greyTextA90 = Color(0xFF5D7A90);
   static const Color greyText6CA = Color(0xFF9DB6CA);
+  static const Color textBlack21B = Color(0xFF00521B);
   static const Color blueText = Color(0xff0D72FF);
   static const Color borderColor = Color(0xffE2E6EE);
   static const Color secondary = Color(0xffA9AABC);
@@ -19,7 +20,7 @@ class Style {
   static const Color white = Color(0xffffffff);
   static const Color blue = Color.fromRGBO(66, 133, 244, 1);
   static const Color text = Color(0xff000000);
-  static const Color textLightBlack = Color(0xFF2B333E);
+  static const Color textBlack33E = Color(0xFF2B333E);
   static const Color bodyText = Color(0xff8FA0B4);
   static const Color grey = Color(0xffAFAFAF);
   static const Color dividerColor = Color(0xFFEDF2F6);
@@ -62,7 +63,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w400,
     );
   }
@@ -71,7 +72,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w400,
     );
   }
@@ -80,7 +81,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w400,
     );
   }
@@ -89,7 +90,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w400,
     );
   }
@@ -98,7 +99,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w500,
     );
   }
@@ -107,7 +108,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w500,
     );
   }
@@ -116,7 +117,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w500,
     );
   }
@@ -125,7 +126,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w600,
     );
   }
@@ -134,7 +135,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w600,
     );
   }
@@ -143,7 +144,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w700,
     );
   }
@@ -152,7 +153,7 @@ class Style {
     return TextStyle(
       fontSize: size,
       color: color,
-      fontFamily: 'SFProDisplay',
+      fontFamily: 'Gilroy',
       fontWeight: FontWeight.w700,
     );
   }
