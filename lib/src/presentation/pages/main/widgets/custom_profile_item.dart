@@ -108,7 +108,9 @@ class CustomProfileItem extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
-                      dateTimeToString(chatModel?.lastMessaage?.dateTime),
+                      chatModel?.lastMessaage?.dateTime == null
+                          ? ""
+                          : dateTimeToString(chatModel?.lastMessaage?.dateTime),
                       textAlign: TextAlign.right,
                       style:
                           Style.medium14(size: 12.sp, color: Style.greyTextA90),
